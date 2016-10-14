@@ -4,6 +4,7 @@ var todoController = require('./controllers/todoController');
 
 app.set('view engine', 'ejs');
 
+// serve static assets
 app.use(express.static('./public'));
 
 todoController(app);
