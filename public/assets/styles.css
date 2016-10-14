@@ -1,6 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #0d1521;
-  font-family: tahoma;
+  background: #032962;
+  font-family: 'Helvetica Neue', sans-serif;
   color: #989898;
 }
 
@@ -52,19 +56,25 @@ li {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  font-family: arial;
   font-size: 20px;
   cursor: pointer;
   letter-spacing: 1px;
+  background-color: #04347b;
+  border: 1px solid rgba(40, 40, 40, 0.7);
+  margin-bottom: 5px;
+}
+div.id {
+  display: none;
 }
 
 li:hover {
   text-decoration: line-through;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 52, 127, 0.7);
 }
 
 h1 {
-  background: url(/assets/logo.png) no-repeat center;
-  margin-bottom: 0;
-  text-indent: -10000px;
+  font-size: 30px;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 20px;
 }

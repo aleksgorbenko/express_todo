@@ -16,35 +16,35 @@ var todoSchema = new mongoose.Schema({
 //create model and the type of schmea it uses
 var Todo = mongoose.model('Todo', todoSchema);
 
-var itemOne = Todo({item: 'make bed'}).save(function(err) {
-    if (err) throw err;
-    console.log('item saved');
-});
-
-var data = [{
-    item: 'get milk'
-}, {
-    item: 'walk dog'
-}, {
-    item: 'learn python'
-}];
-
 module.exports = function(app) {
     app.get('/todo', function(req, res) {
-        res.render('todo', {
-            todos: data
+        // this way it finds all items in the collection
+        Todo.find({}, function(err, data) {
+            if (err) return console.error(err);
+            res.render('todo', {
+                todos: data
+            });
         });
     });
 
     app.post('/todo', urlencodedParser, function(req, res) {
-        data.push(req.body);
-        res.json(data);
+
+        var newTodo = Todo(req.body).save(function(err, data) {
+            if (err) return console.error(err);
+            res.json(data);
+        });
     });
 
-    app.delete('/todo/:item', function(req, res) {
-        data = data.filter(function(todo) {
-            return todo.item.replace(/ /g, '-') !== req.params.item;
-        });
-        res.json(data);
+    app.delete('/todo/:itemId', function(req, res) {
+        // reason why we replace all hyphens with space is because
+        // in the url item name will come with hyphens. to map item with the
+        // item in DB we need an exact match
+        // Todo.find({item: req.params.item.replace(/\-/g, ' ')})
+        //
+        Todo.find({_id: req.params.itemId})
+            .remove(function(err, data) {
+                if (err) return console.error(err);
+                res.json(data);
+            });
     });
 };
