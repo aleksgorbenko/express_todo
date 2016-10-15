@@ -10,6 +10,9 @@ $(function() {
             type: 'POST',
             url: '/todo',
             data: todo,
+            // on success append item with no reloading
+            // hidden stores ID mapped to DB to be used for
+            // http requests
             success: function(data) {
                 $('#todo-table ul').append(
                   '<li class="todo-item">' + data.item +
@@ -21,10 +24,8 @@ $(function() {
     });
 
     $('#todo-table ul').on('click', '.todo-item' , function() {
-        // changing all space for hypthens so that url request doesnt
-        // any
-        // var item = $(this).text().replace(/ /g, '-');
-        // below better version, but it's monkey-patching :)
+        // remove on click
+        // reason - not to use relaoding
         var itemId = $(this).children('.id').text();
         var item = $(this);
         $.ajax({

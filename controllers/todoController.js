@@ -17,7 +17,7 @@ var todoSchema = new mongoose.Schema({
 var Todo = mongoose.model('Todo', todoSchema);
 
 module.exports = function(app) {
-    app.get('/todo', function(req, res) {
+    app.get('/', function(req, res) {
         // this way it finds all items in the collection
         Todo.find({}, function(err, data) {
             if (err) return console.error(err);
@@ -36,11 +36,6 @@ module.exports = function(app) {
     });
 
     app.delete('/todo/:itemId', function(req, res) {
-        // reason why we replace all hyphens with space is because
-        // in the url item name will come with hyphens. to map item with the
-        // item in DB we need an exact match
-        // Todo.find({item: req.params.item.replace(/\-/g, ' ')})
-        //
         Todo.find({_id: req.params.itemId})
             .remove(function(err, data) {
                 if (err) return console.error(err);

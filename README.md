@@ -8,7 +8,7 @@ I wanted to build a simple application to leaen Node.js and Express.js. Often No
 
 I have also used EJS as a view engine as I wanted to pratice using it.
 
-## Tech used:
+## Tech used
 
 * Express.js on the back-end.
 * [Mlab](https://mlab.com/) as a cloud DB with Mongoose.
@@ -17,8 +17,7 @@ I have also used EJS as a view engine as I wanted to pratice using it.
 
 ## Installation
 
-1. Make sure you have Node.js installed.
-2. Clone or download the repo.
-3. Run `npm install`.
-4. To launch app run `npm start`
-
+1.Make sure you have [Node.js](https://nodejs.org) installed.
+2.Clone or download the repo.
+3.Run `npm install`.
+4.To launch app run `npm start`
